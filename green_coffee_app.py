@@ -48,7 +48,7 @@ if st.button("Calculate Blended Cost"):
         weight = row["Weight (kg)"]
         price = row["Price per kg (₱)"]
         proc_type = row["Processing Type"]
-        dehulled = row["Dehulled?"]
+        dehulled = row["For Hulling"]
         addl_costs = row["Additional Costs (₱)"]
 
         # Apply dehulling cost and volume loss
