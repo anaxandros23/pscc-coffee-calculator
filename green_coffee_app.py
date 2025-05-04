@@ -23,7 +23,17 @@ initial_data = pd.DataFrame({
     "Additional Costs (₱)": [0, 0, 0],
 })
 
-input_df = st.data_editor(initial_data, num_rows="dynamic", use_container_width=True)
+input_df = st.data_editor(
+    initial_data,
+    column_config={
+        "Processing Type": st.column_config.SelectboxColumn(
+            "Processing Type",
+            options=["Parchment", "Dry Natural"]
+        )
+    },
+    num_rows="dynamic",
+    use_container_width=True
+)
 
 # Processing loss rates
 loss_rates = {"Parchment": 0.18, "Dry Natural": 0.45}
