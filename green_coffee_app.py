@@ -15,12 +15,12 @@ Enter the details for each green coffee origin below. This calculator will accou
 
 # Default Data
 initial_data = pd.DataFrame({
-    "Origin": ["Nueva Vizcaya", "Sagada", "Kiangan"],
-    "Weight (kg)": [1000, 50, 281],
-    "Price per kg (₱)": [320, 450, 430],
-    "Processing Type": ["", "Parchment", "Parchment"],
-    "For Hulling": [False, True, True],
-    "Additional Costs (₱)": [0, 0, 0],
+    "Origin": ["Example"],
+    "Weight (kg)": [1],
+    "Price per kg (₱)": [100],
+    "Processing Type": ["Dry Natural"],
+    "For Hulling": [True],
+    "Additional Costs (₱)": [0],
 })
 
 input_df = st.data_editor(
