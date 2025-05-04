@@ -10,6 +10,7 @@ Enter the details for each green coffee origin below. This calculator will accou
 - Dehulling loss (based on processing type)
 - Fixed ₱10/kg dehulling fee if applied
 - Additional fuel or handling costs
+- Loss rate is applied as a cost markup (18% for parchment, 45% for dry naturals)
 - Output a weighted average cost per final kg
 """)
 
@@ -48,18 +49,20 @@ if st.button("Calculate Blended Cost"):
         weight = row["Weight (kg)"]
         price = row["Price per kg (₱)"]
         proc_type = row["Processing Type"]
-        dehulled = row["For Hulling"]
+        for_hulling = row["For Hulling"]
         addl_costs = row["Additional Costs (₱)"]
 
-        # Apply dehulling cost and volume loss
-        if dehulled and proc_type in loss_rates:
-            addl_costs += weight * 10  # ₱10/kg dehulling service
+        purchase_total = weight * price
+        hulling_fee = weight * 10 if for_hulling else 0
+        loss_uplift = 0
+
+        if for_hulling and proc_type in loss_rates:
+            loss_uplift = purchase_total * loss_rates[proc_type]
             final_volume = weight * (1 - loss_rates[proc_type])
         else:
             final_volume = weight
 
-        purchase_total = weight * price
-        total_with_addl = purchase_total + addl_costs
+        total_with_addl = purchase_total + hulling_fee + loss_uplift + addl_costs
         final_cost_per_kg = total_with_addl / final_volume if final_volume else 0
 
         total_cost += total_with_addl
