@@ -19,7 +19,7 @@ initial_data = pd.DataFrame({
     "Weight (kg)": [1000, 50, 281],
     "Price per kg (₱)": [320, 450, 430],
     "Processing Type": ["", "Parchment", "Parchment"],
-    "Dehulled?": [False, True, True],
+    "For Hulling": [False, True, True],
     "Additional Costs (₱)": [0, 0, 0],
 })
 
